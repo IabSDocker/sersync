@@ -6,7 +6,6 @@
 #
 # This makefile implements configuration specific macros and targets.
 
-
 # Environment
 MKDIR=mkdir
 CP=cp
@@ -20,8 +19,16 @@ CXX=g++
 FC=gfortran
 AS=as
 
-# Macros
-CND_PLATFORM=GNU-Linux-x86
+# Determine platform automatically based on system architecture
+UNAME_M := $(shell uname -m)
+ifeq ($(UNAME_M),x86_64)
+    CND_PLATFORM=GNU-Linux-x86_64
+else ifeq ($(UNAME_M),i686)
+    CND_PLATFORM=GNU-Linux-x86
+else
+    CND_PLATFORM=GNU-Linux-unknown
+endif
+
 CND_CONF=Release
 CND_DISTDIR=dist
 
@@ -45,7 +52,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/QueueRetry.o \
 	${OBJECTDIR}/CdnRefreshInterface.o
 
-
 # C Compiler Flags
 CFLAGS=
 
@@ -60,15 +66,14 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-# LDLIBSOPTIONS=-Llib -L/usr/local/lib -static -lboost_thread -lboost_regex -lboost_date_time -lpthread
 LDLIBSOPTIONS=-Llib -L/lib64 -L/usr/lib64 -L/usr/local/lib -lboost_thread -lboost_regex -lboost_system -lboost_date_time -lpthread 
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-Release.mk dist/Release/GNU-Linux-x86/sersync2
+	"${MAKE}"  -f nbproject/Makefile-Release.mk dist/Release/${CND_PLATFORM}/sersync2
 
-dist/Release/GNU-Linux-x86/sersync2: ${OBJECTFILES}
-	${MKDIR} -p dist/Release/GNU-Linux-x86
+dist/Release/${CND_PLATFORM}/sersync2: ${OBJECTFILES}
+	${MKDIR} -p dist/Release/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sersync2 -s ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/main.o: main.cpp 
@@ -132,7 +137,7 @@ ${OBJECTDIR}/CdnRefreshInterface.o: CdnRefreshInterface.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r build/Release
-	${RM} dist/Release/GNU-Linux-x86/sersync2
+	${RM} dist/Release/${CND_PLATFORM}/sersync2
 
 # Subprojects
 .clean-subprojects:
