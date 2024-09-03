@@ -34,5 +34,5 @@ dist/Release/GNU-Linux-aarch64/sersync2: ELF 64-bit LSB executable, ARM aarch64,
 [root@luckly sersync]# 
 ```
 
-[link](https://github.com/generals-space/sersync)
-[link](http://code.google.com/p/sersync/)
+[generals-space](https://github.com/generals-space/sersync)</br>
+[google-sersync](http://code.google.com/p/sersync/)
