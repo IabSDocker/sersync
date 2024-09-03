@@ -11,13 +11,16 @@ CND_DISTDIR=dist
 ARCH := $(shell uname -m)
 
 # Set platform based on detected architecture
-ifeq ($(ARCH), x86_64)
+ifeq ($(ARCH),x86_64)
+    PLATFORM := GNU-Linux-x86_64
+else ifeq ($(ARCH),i686)
     PLATFORM := GNU-Linux-x86
-else ifeq ($(ARCH), aarch64)
+else ifeq ($(ARCH),aarch64)
     PLATFORM := GNU-Linux-aarch64
 else
     PLATFORM := GNU-Linux-unknown
 endif
+
 
 # Use PLATFORM variable for setting paths
 CND_PLATFORM_Release=$(PLATFORM)

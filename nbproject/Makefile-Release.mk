@@ -25,9 +25,12 @@ ifeq ($(UNAME_M),x86_64)
     CND_PLATFORM=GNU-Linux-x86_64
 else ifeq ($(UNAME_M),i686)
     CND_PLATFORM=GNU-Linux-x86
+else ifeq ($(UNAME_M),aarch64)
+    CND_PLATFORM=GNU-Linux-aarch64
 else
     CND_PLATFORM=GNU-Linux-unknown
 endif
+
 
 CND_CONF=Release
 CND_DISTDIR=dist
