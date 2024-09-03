@@ -8,8 +8,6 @@ Synchronize files and folders between servers -using inotiy and rsync with c++
 
 参考文章
 
-[Sersync使用指南](http://www.linuxidc.com/Linux/2012-02/53572.htm)
-
 [git官方文档Issues](https://github.com/xiqingongzi/sersync/issues)
 
 ------
@@ -19,7 +17,7 @@ Synchronize files and folders between servers -using inotiy and rsync with c++
 #### CentOS7.9下amd64和arm64编译成功.
 ##### 安装gcc及依赖
 ```bash
-[root@luckly ~]# yum install gcc gcc-c++ boost-devel libcurl-devel -y
+[root@luckly ~]# yum install make gcc gcc-c++ boost-devel libcurl-devel -y
 ```
 ##### 编译二进制文件
 ```bash
@@ -33,6 +31,5 @@ dist/Release/GNU-Linux-aarch64/sersync2: ELF 64-bit LSB executable, ARM aarch64,
 [root@luckly sersync]# 
 ```
 
-## 使用方法
-
-目前不想写这个, 网上有很多相关教程, 请自行搜索.
+[link](https://github.com/generals-space/sersync)
+[link](http://code.google.com/p/sersync/)
