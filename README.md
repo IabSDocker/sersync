@@ -16,32 +16,21 @@ Synchronize files and folders between servers -using inotiy and rsync with c++
 
 ## 编译步骤
 
-CentOS7下编译成功.
-
-首先下载boost库, 解压, 得到`boost_1_64_0`.
-
-将其根目录下的`boost`子目录拷贝到`/usr/local/include`目录下, 作为头文件引用.
-
-然后按照[Getting Started on Unix Variants](http://www.boost.org/doc/libs/1_64_0/more/getting_started/unix-variants.html#easy-build-and-install)中的指示安装boost库, 作为共享库so使用, 命令如下
-
+#### CentOS7.9下amd64和arm64编译成功.
+##### 安装gcc及依赖
+```bash
+[root@luckly ~]# yum install gcc gcc-c++ boost-devel libcurl-devel -y
 ```
-$ cd path/to/boost_1_64_0
-$ ./bootstrap.sh --help
-## 配置选项, 相当于configure
-$ ./bootstrap.sh --prefix=/usr/local
-## 相当于make
-$ ./b2
-## 相当于make install
-$ ./b2 install
-```
-
-完成后boost库将出现在/usr/local/lib目录下. 然后可以使用`make`进行操作
-
-```
-## 将在build/Release目录下生成.o等中间文件, 并且dist目录下生成sersync2可执行文件
-$ make
-## 清理build目录和dist目录下的文件
-$ make clean
+##### 编译二进制文件
+```bash
+[root@luckly ~]# git clone https://gitlab.ayou.ink/IabSDocker/sersync.git
+[root@luckly ~]# cd sersync
+[root@luckly sersync]# make all
+[root@luckly sersync]# ll dist/Release/GNU-Linux-aarch64/sersync2
+# 用file命令检查是否为当前系统架构的可执行文件
+[root@luckly sersync]# file dist/Release/GNU-Linux-aarch64/sersync2 
+dist/Release/GNU-Linux-aarch64/sersync2: ELF 64-bit LSB executable, ARM aarch64, version 1 (GNU/Linux), dynamically linked (uses shared libs), for GNU/Linux 3.7.0, BuildID[sha1]=b82eb5c52faf58b7e25a69c7c409060b7be28972, stripped
+[root@luckly sersync]# 
 ```
 
 ## 使用方法
