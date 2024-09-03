@@ -12,6 +12,9 @@ Synchronize files and folders between servers -using inotiy and rsync with c++
 
 ------
 
+
+## [GitLab仓库](https://gitlab.ayou.ink/IabSDocker/sersync)
+
 ## 编译步骤
 
 #### CentOS7.9下amd64和arm64编译成功.
